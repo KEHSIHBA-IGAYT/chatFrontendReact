@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -17,6 +17,9 @@ const formatDate = (dateString) => {
 }
 
 const Messages = ({ chat }) => {
+
+    console.log("message", chat);
+
     return (
         <div style={{ width: '100%' }}>
             <List>
@@ -31,7 +34,7 @@ const Messages = ({ chat }) => {
                                     />
                                 </ListItemAvatar>
                                 <div style={{ "display": "block" }}>
-                                    <ListItemText style={{ "color": "blue", "font-size": "small" }} primary={formatDate(new Date(message.createdAt))} />
+                                    <ListItemText style={{ "color": "blue", "fontSize": "small" }} primary={formatDate(new Date(message.createdAt))} />
                                     <ListItemText primary={`${message.userName} : ${message.message}`} />
                                 </div>
                             </ListItem>

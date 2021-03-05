@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
 import ChatBox from './ChatBox';
@@ -75,6 +76,7 @@ const ChatRoom = () => {
 
         //Recieve message
         socketRef.current.on("message-added", (data => {
+            console.log("message received");
             setChat(chat => [...chat, data])
         }))
 
@@ -101,6 +103,7 @@ const ChatRoom = () => {
         //clear the loggedIn user
         (async () => {
             await userAPI.clearUser();
+            history.push(`/`);
         })();
     }
 
@@ -134,12 +137,23 @@ const ChatRoom = () => {
                         (typeof user !== 'undefined') &&
                         (typeof user.loggedIn !== 'undefined') &&
                         id === user.loggedIn &&
-                        <ChatBox sendMessage={message => {
-                            sendMessage(message);
-                        }}
-                        />)
+                        <div style={{ "width": "100%", "display": "block" }}>
+                            <ChatBox sendMessage={message => {
+                                sendMessage(message);
+                            }}
+                            />
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                onClick={() => { handleTabClosing() }}>
+                                Logout
+                                    </Button>
+                        </div>
+                    )
                 }
             </Box>
+
+
 
         </div>
     )

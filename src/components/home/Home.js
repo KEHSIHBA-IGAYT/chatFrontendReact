@@ -21,14 +21,21 @@ const useStyles = makeStyles((theme) => ({
     },
     card: {
         margin: 'auto',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     avatars: {
         margin: 'auto',
         width: theme.spacing(15),
         height: theme.spacing(15),
         padding: '10px',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        transition: theme.transitions.create(["background", "background-color"], {
+            duration: theme.transitions.duration.complex,
+        }),
+        "&:hover": {
+            backgroundColor: "#333",
+            cursor: 'pointer'
+        },
     }
 }));
 
@@ -94,7 +101,7 @@ const Home = () => {
                                     enterChatRoom(user);
                                 }}
                             />
-                            <h3 style={{ "text-align": "center" }}>{user.name}</h3>
+                            <h3 style={{ "textAlign": "center" }}>{user.name}</h3>
                         </div>
                     )
                 })}
