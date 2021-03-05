@@ -83,7 +83,7 @@ const ChatRoom = () => {
             chatSocket.disconnect();
         }
 
-    }, [])
+    }, [history])
 
 
 
@@ -125,7 +125,7 @@ const ChatRoom = () => {
             <Box className={classes.root}>
                 {chat.length ?
                     <Messages chat={chat} /> :
-                    <div style={{ "height": "600px", "box-shadow": "5px 10px #888888" }}></div>
+                    <div style={{ "height": "600px", "boxShadow": "5px 10px #888888" }}></div>
                 }
             </Box>
             <Box className={classes.root}>
