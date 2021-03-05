@@ -1,0 +1,4 @@
+{
+    "SERVER_BASE_URL": "http://3.223.171.163:3000",
+    "SERVER_API_VER": "api/v1"
+}
